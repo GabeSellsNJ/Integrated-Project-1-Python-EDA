@@ -4,6 +4,7 @@ import plotly.express as px
 
 df = pd.read_csv('vehicles_us.csv')
 
+#create new column for just the manufacturer
 df['manufacturer'] = df['model'].apply(lambda x: x.split()[0])
 
 #fill missing values with 0. and change column to int type
@@ -36,7 +37,8 @@ st.header('Mileage Vs Price')
 scatterplot = px.scatter(df, x='odometer', y='price')
 st.write(scatterplot)
 
-#distribution of price based on manfacturer
+
+#distribution of price based on manufacturer
 st.header('Compare price distribution based on manufacturer')
 # get a list of car manufacturers
 manufac_list = sorted(df['manufacturer'].unique())
@@ -49,7 +51,7 @@ manufacturer_0 = st.selectbox(
 
 mask_filter_0 = (df['manufacturer'] == manufacturer_0)
 
-# add a checkbox if a user wants pick all manufac
+# add a checkbox if a user wants to pick all manufacturers
 choose_all= st.checkbox('All Manufacturers', value=True)
 if choose_all:
     df_filtered_0 = df
