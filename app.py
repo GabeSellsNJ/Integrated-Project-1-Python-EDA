@@ -34,7 +34,10 @@ st.dataframe(df)
 
 #scatterplot of mileage vs price
 st.header('Mileage Vs Price')
-scatterplot = px.scatter(df, x='odometer', y='price')
+#removing any outliers above 450,000 miles
+mileage_mask = df['odometer'] < 450000
+df_mileage = df[mileage_mask]
+scatterplot = px.scatter(df_mileage, x='odometer', y='price')
 st.write(scatterplot)
 
 
@@ -43,23 +46,23 @@ st.header('Compare price distribution based on manufacturer')
 # get a list of car manufacturers
 manufac_list = sorted(df['manufacturer'].unique())
 # get user's inputs from a dropdown menu
-manufacturer_0 = st.selectbox(
+manufacturer = st.selectbox(
                               label='Select manufacturer', # title of the select box
                               options=manufac_list, # options listed in the select box
                               index=manufac_list.index('chevrolet') # default pre-selected option
                               )
 
-mask_filter_0 = (df['manufacturer'] == manufacturer_0)
+mask_filter = (df['manufacturer'] == manufacturer)
 
 # add a checkbox if a user wants to pick all manufacturers
 choose_all= st.checkbox('All Manufacturers', value=True)
 if choose_all:
-    df_filtered_0 = df
+    df_filtered = df
 else: 
-    df_filtered_0 = df[mask_filter_0] #filter the dataframe if unchecked
+    df_filtered = df[mask_filter] #filter the dataframe if unchecked
 
 # create a plotly histogram figure
-fig4 = px.histogram(df_filtered_0,
+fig4 = px.histogram(df_filtered,
                       x='price',
                       nbins=30,
                       color='condition',
