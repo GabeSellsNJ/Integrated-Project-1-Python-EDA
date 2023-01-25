@@ -19,4 +19,5 @@ You can run my pyhton script by opening an IDE (such as VS Code) and finding the
 Or you may use the Terminal on your computer. Enter "cd" into Terminal along with the absolute path where this poject is located on your computer. Enter "streamlit run app.py" to run the python script.
 Or you can can simply view this project in a web browser with the link below:
 
+https://praticum-project-4.onrender.com
 
