@@ -1,10 +1,12 @@
 # Practicum-Project-4
 
+TITLE: CAR SALES ANALYSIS
+
 Introduction
 Within this project is a csv file containing over 50,0000 entries. Each entry contains various information regarding a car sale.
 In my analysis, I focused on price, odometer mileage, manufacturer, and condition.
 
-In the first part of my code, I pre-processed the data to fill in any missing data. Most importantly for my analysis, I remove any entries containing sales lower than a $1.00. 
+In the first part of my code, I pre-processed the data to fill in any missing data. Most importantly for my analysis, I remove any entries containing sales lower than a $1,000 and greater than $80,000. 
 
 Data Anaylsis 1: Mileage Vs Price
 I simply chart (using a scatter plot) price vs mileage (odometer). I removed any outliers with mileage over 450,000 miles.
